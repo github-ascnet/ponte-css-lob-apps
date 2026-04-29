@@ -268,7 +268,7 @@
           "label": "Name der Applikation",
           "placeholder": "z.B. Patientenportal",
           "required": true,
-          "helpText": "Einziges Freitextfeld in diesem Fragekatalog."
+          "helpText": "Geben sie den Namen der zu bewertenden Applikation an."
         },
         {
           "id": "operatingModel",
