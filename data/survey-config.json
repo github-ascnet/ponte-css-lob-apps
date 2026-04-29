@@ -1,0 +1,409 @@
+﻿{
+  "title": "Fragekatalog - Authentifizierung und Autorisierung",
+  "version": "1.0.0",
+  "riskMapping": {
+    "green": {
+      "label": "Grün - kompatibel",
+      "description": "Die aktuelle Konfiguration wirkt kompatibel und risikoarm.",
+      "severity": 1
+    },
+    "yellow": {
+      "label": "Gelb - prüfen",
+      "description": "Es bestehen Einschränkungen oder Klärungsbedarf.",
+      "severity": 2
+    },
+    "red": {
+      "label": "Rot - kritisch",
+      "description": "Erhöhter Anpassungsbedarf oder kritische Inkompatibilität.",
+      "severity": 3
+    },
+    "grey": {
+      "label": "Grau - unklar",
+      "description": "Die Datenlage ist unvollständig oder unklar.",
+      "severity": 0
+    }
+  },
+  "optionSets": {
+    "yesNoUnknown": [
+      { "value": "yes", "label": "Ja", "risk": "green" },
+      { "value": "no", "label": "Nein", "risk": "red" },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "betriebsmodell": [
+      { "value": "on_premises", "label": "On-Premises", "risk": "green" },
+      { "value": "cloud_saas", "label": "Cloud / SaaS", "risk": "yellow" },
+      { "value": "hybrid", "label": "Hybrid", "risk": "yellow" },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "plattform": [
+      { "value": "windows_server", "label": "Windows Server", "risk": "green" },
+      { "value": "linux", "label": "Linux", "risk": "green" },
+      { "value": "webplattform", "label": "Webplattform", "risk": "green" },
+      {
+        "value": "datenbankloesung",
+        "label": "Datenbanklösung",
+        "risk": "yellow"
+      },
+      { "value": "appliance", "label": "Appliance", "risk": "yellow" },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "authentifizierung": [
+      {
+        "value": "kerberos",
+        "label": "Windows Authentication / Kerberos",
+        "risk": "green"
+      },
+      { "value": "ntlm", "label": "NTLM", "risk": "yellow" },
+      {
+        "value": "username_password",
+        "label": "Benutzername / Passwort",
+        "risk": "yellow"
+      },
+      { "value": "saml", "label": "SAML", "risk": "green" },
+      { "value": "oauth2", "label": "OAuth 2.0", "risk": "green" },
+      { "value": "oidc", "label": "OpenID Connect", "risk": "green" },
+      { "value": "entra_id", "label": "Entra ID", "risk": "green" },
+      { "value": "adfs", "label": "ADFS", "risk": "yellow" },
+      {
+        "value": "other_idp",
+        "label": "Anderer Identity Provider",
+        "risk": "yellow"
+      },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "benutzeridentifikation": [
+      { "value": "upn", "label": "UPN", "risk": "green" },
+      { "value": "email", "label": "E-Mail-Adresse", "risk": "green" },
+      {
+        "value": "samaccountname",
+        "label": "sAMAccountName",
+        "risk": "yellow"
+      },
+      {
+        "value": "objectguid",
+        "label": "ObjectGUID / ImmutableId",
+        "risk": "green"
+      },
+      {
+        "value": "internal_user_id",
+        "label": "Interne Benutzer-ID",
+        "risk": "yellow"
+      },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "autorisierung": [
+      {
+        "value": "ad_groups_direct",
+        "label": "AD-Gruppen direkt",
+        "risk": "green"
+      },
+      {
+        "value": "internal_roles",
+        "label": "Internes Rollenmodell",
+        "risk": "yellow"
+      },
+      {
+        "value": "imported_roles",
+        "label": "Importierte Benutzer/Rollen",
+        "risk": "yellow"
+      },
+      {
+        "value": "manual_permissions",
+        "label": "Manuelle Berechtigungsvergabe",
+        "risk": "red"
+      },
+      { "value": "mixed", "label": "Mischform", "risk": "yellow" },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "cross_forest": [
+      { "value": "supported", "label": "Unterstützt", "risk": "green" },
+      {
+        "value": "supported_limited",
+        "label": "Unterstützt mit Einschränkungen",
+        "risk": "yellow"
+      },
+      { "value": "not_supported", "label": "Nicht unterstützt", "risk": "red" },
+      { "value": "not_tested", "label": "Nicht getestet", "risk": "grey" },
+      {
+        "value": "vendor_confirm",
+        "label": "Hersteller muss bestätigen",
+        "risk": "grey"
+      }
+    ],
+    "identity_provider": [
+      {
+        "value": "active_directory",
+        "label": "Active Directory",
+        "risk": "green"
+      },
+      { "value": "entra_id", "label": "Entra ID", "risk": "green" },
+      { "value": "adfs", "label": "ADFS", "risk": "yellow" },
+      {
+        "value": "third_party_iam",
+        "label": "Drittanbieter IAM",
+        "risk": "yellow"
+      },
+      { "value": "none", "label": "Kein zentrales System", "risk": "red" },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "gruppenunterstuetzung": [
+      {
+        "value": "nested_groups",
+        "label": "Verschachtelte Gruppen unterstützt",
+        "risk": "green"
+      },
+      { "value": "flat_only", "label": "Nur flache Gruppen", "risk": "yellow" },
+      { "value": "limited", "label": "Eingeschränkt", "risk": "yellow" },
+      { "value": "not_supported", "label": "Nicht unterstützt", "risk": "red" },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "einschraenkungen": [
+      {
+        "value": "token_size",
+        "label": "Token Size Limitation",
+        "risk": "yellow"
+      },
+      {
+        "value": "nested_group_issues",
+        "label": "Probleme mit verschachtelten Gruppen",
+        "risk": "yellow"
+      },
+      {
+        "value": "ad_attribute_dependency",
+        "label": "Abhängigkeit von AD-Attributen",
+        "risk": "yellow"
+      },
+      {
+        "value": "multi_domain_issues",
+        "label": "Probleme mit mehreren Domains oder Forests",
+        "risk": "red"
+      },
+      {
+        "value": "no_known_limitations",
+        "label": "Keine bekannten Einschränkungen",
+        "risk": "green"
+      },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "migration": [
+      {
+        "value": "no_impact",
+        "label": "Keine Auswirkungen erwartet",
+        "risk": "green"
+      },
+      {
+        "value": "adjustments_needed",
+        "label": "Anpassungen notwendig",
+        "risk": "yellow"
+      },
+      {
+        "value": "users_recreate",
+        "label": "Benutzer müssen neu angelegt werden",
+        "risk": "red"
+      },
+      {
+        "value": "groups_remap",
+        "label": "Gruppen müssen neu zugeordnet werden",
+        "risk": "red"
+      },
+      {
+        "value": "migration_possible",
+        "label": "Migration bestehender Benutzerzuordnungen möglich",
+        "risk": "green"
+      },
+      {
+        "value": "vendor_support_needed",
+        "label": "Herstellerunterstützung erforderlich",
+        "risk": "yellow"
+      },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "ampelbewertung": [
+      { "value": "green", "label": "Grün", "risk": "green" },
+      { "value": "yellow", "label": "Gelb", "risk": "yellow" },
+      { "value": "red", "label": "Rot", "risk": "red" },
+      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+    ],
+    "bewertung": [
+      { "value": "compatible", "label": "Kompatibel", "risk": "green" },
+      {
+        "value": "likely_compatible",
+        "label": "Wahrscheinlich kompatibel",
+        "risk": "yellow"
+      },
+      { "value": "unclear", "label": "Unklar", "risk": "grey" },
+      {
+        "value": "adaptation_expected",
+        "label": "Anpassungsbedarf erwartet",
+        "risk": "yellow"
+      },
+      {
+        "value": "critical",
+        "label": "Kritisch / nicht kompatibel",
+        "risk": "red"
+      }
+    ],
+    "rating_1_5": [
+      { "value": "1", "label": "1 - sehr gut", "risk": "green" },
+      { "value": "2", "label": "2 - gut", "risk": "green" },
+      { "value": "3", "label": "3 - neutral", "risk": "yellow" },
+      { "value": "4", "label": "4 - erhöht", "risk": "yellow" },
+      { "value": "5", "label": "5 - kritisch", "risk": "red" }
+    ]
+  },
+  "sections": [
+    {
+      "id": "context",
+      "title": "Anwendungskontext",
+      "icon": "fa-layer-group",
+      "description": "Grundlegende Eckdaten zur Zielapplikation und Plattform.",
+      "questions": [
+        {
+          "id": "appName",
+          "type": "text",
+          "label": "Name der Applikation",
+          "placeholder": "z.B. Patientenportal",
+          "required": true,
+          "helpText": "Einziges Freitextfeld in diesem Fragekatalog."
+        },
+        {
+          "id": "operatingModel",
+          "type": "dropdown",
+          "label": "Betriebsmodell",
+          "required": true,
+          "optionSet": "betriebsmodell"
+        },
+        {
+          "id": "platform",
+          "type": "checkbox-group",
+          "label": "Plattform",
+          "required": true,
+          "optionSet": "plattform"
+        }
+      ]
+    },
+    {
+      "id": "authentication",
+      "title": "Authentifizierung",
+      "icon": "fa-user-shield",
+      "description": "Bewertung der eingesetzten Authentifizierungsverfahren.",
+      "questions": [
+        {
+          "id": "supportsModernProtocols",
+          "type": "radio-cards",
+          "label": "Unterstützt die Lösung moderne Verfahren (SAML/OIDC/OAuth)?",
+          "required": true,
+          "optionSet": "yesNoUnknown"
+        },
+        {
+          "id": "authenticationMethods",
+          "type": "checkbox-group",
+          "label": "Unterstützte Authentifizierung",
+          "required": true,
+          "optionSet": "authentifizierung"
+        },
+        {
+          "id": "crossForestCapability",
+          "type": "dropdown",
+          "label": "Cross-Forest-Fähigkeit",
+          "required": true,
+          "optionSet": "cross_forest"
+        }
+      ]
+    },
+    {
+      "id": "identity",
+      "title": "Identifikation und Identity Provider",
+      "icon": "fa-id-card",
+      "description": "Welche Identifikatoren und IdP-Anbindungen bestehen?",
+      "questions": [
+        {
+          "id": "userIdentification",
+          "type": "dropdown",
+          "label": "Benutzeridentifikation",
+          "required": true,
+          "optionSet": "benutzeridentifikation"
+        },
+        {
+          "id": "identityProvider",
+          "type": "dropdown",
+          "label": "Identity Provider",
+          "required": true,
+          "optionSet": "identity_provider"
+        },
+        {
+          "id": "groupSupport",
+          "type": "dropdown",
+          "label": "Gruppenunterstützung",
+          "required": true,
+          "optionSet": "gruppenunterstuetzung"
+        }
+      ]
+    },
+    {
+      "id": "authorization",
+      "title": "Autorisierung und Einschränkungen",
+      "icon": "fa-key",
+      "description": "Rollenmodell, technische Grenzen und Migrationsauswirkungen.",
+      "questions": [
+        {
+          "id": "authorizationModel",
+          "type": "dropdown",
+          "label": "Autorisierung",
+          "required": true,
+          "optionSet": "autorisierung"
+        },
+        {
+          "id": "knownLimitations",
+          "type": "checkbox-group",
+          "label": "Bekannte Einschränkungen",
+          "required": true,
+          "optionSet": "einschraenkungen"
+        },
+        {
+          "id": "migrationImpact",
+          "type": "dropdown",
+          "label": "Migration",
+          "required": true,
+          "optionSet": "migration"
+        }
+      ]
+    },
+    {
+      "id": "assessment",
+      "title": "Gesamtbewertung",
+      "icon": "fa-gauge-high",
+      "description": "Strukturierte Bewertung von Risiko, Kompatibilität und Anpassungsbedarf.",
+      "questions": [
+        {
+          "id": "compatibilityAssessment",
+          "type": "dropdown",
+          "label": "Bewertung",
+          "required": true,
+          "optionSet": "bewertung"
+        },
+        {
+          "id": "riskScore",
+          "type": "rating-scale",
+          "label": "Risiko (1-5)",
+          "required": true,
+          "optionSet": "rating_1_5"
+        },
+        {
+          "id": "adaptationScore",
+          "type": "rating-scale",
+          "label": "Anpassungsbedarf (1-5)",
+          "required": true,
+          "optionSet": "rating_1_5"
+        },
+        {
+          "id": "trafficLight",
+          "type": "ampel",
+          "label": "Ampelbewertung",
+          "required": true,
+          "optionSet": "ampelbewertung"
+        }
+      ]
+    }
+  ]
+}
