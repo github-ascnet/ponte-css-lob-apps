@@ -694,17 +694,34 @@
 
   function evaluateRisk() {
     const counts = { green: 0, yellow: 0, red: 0, grey: 0 };
+    const questionsForEvaluation = getRiskEvaluationQuestions();
 
-    state.config.sections.forEach(function (section) {
-      section.questions.forEach(function (question) {
-        const answer = state.answers[question.id];
-        const risk = determineRiskForAnswer(question, answer);
-        counts[risk] += 1;
-      });
+    questionsForEvaluation.forEach(function (question) {
+      const answer = state.answers[question.id];
+      const risk = determineRiskForAnswer(question, answer);
+      counts[risk] += 1;
     });
 
     const overall = deriveOverallRisk(counts);
     return { overall: overall, counts: counts };
+  }
+
+  function getRiskEvaluationQuestions() {
+    const assessmentSection = state.config.sections.find(function (section) {
+      return section.id === "assessment";
+    });
+
+    if (
+      assessmentSection &&
+      Array.isArray(assessmentSection.questions) &&
+      assessmentSection.questions.length > 0
+    ) {
+      return assessmentSection.questions;
+    }
+
+    return state.config.sections.flatMap(function (section) {
+      return section.questions;
+    });
   }
 
   function determineRiskForAnswer(question, answer) {
