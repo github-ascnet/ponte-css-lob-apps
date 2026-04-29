@@ -167,9 +167,29 @@
   }
 
   function renderQuestions(section) {
-    return `<div class="question-list">${section.questions
-      .map(renderQuestion)
-      .join("")}</div>`;
+    var rendered = [];
+    var i = 0;
+    var questions = section.questions;
+    while (i < questions.length) {
+      var q = questions[i];
+      if (q.rowGroup) {
+        var group = [];
+        var groupId = q.rowGroup;
+        while (i < questions.length && questions[i].rowGroup === groupId) {
+          group.push(questions[i]);
+          i++;
+        }
+        rendered.push(
+          '<div class="question-row">' +
+            group.map(renderQuestion).join("") +
+            "</div>"
+        );
+      } else {
+        rendered.push(renderQuestion(q));
+        i++;
+      }
+    }
+    return '<div class="question-list">' + rendered.join("") + "</div>";
   }
 
   function renderQuestion(question) {
