@@ -326,7 +326,6 @@
           "label": "Name der Applikation",
           "placeholder": "z.B. Patientenportal",
           "required": true,
-          "helpText": "Geben sie den Namen der zu bewertenden Applikation an.",
           "rowGroup": "appHeader"
         },
         {
@@ -335,7 +334,6 @@
           "label": "Technischer Ansprechpartner",
           "placeholder": "z.B. Max Mustermann (intern) oder support@vendor.com",
           "required": false,
-          "helpText": "Interner oder externer (Hersteller) Ansprechpartner für technische Rückfragen.",
           "rowGroup": "appHeader"
         },
         {
