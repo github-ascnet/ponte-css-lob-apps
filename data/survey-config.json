@@ -1,5 +1,9 @@
 ﻿{
   "title": "Fragekatalog - Authentifizierung und Autorisierung",
+  "ui": {
+    "appTitle": "Fragekatalog - Authentifizierung und Autorisierung",
+    "documentTitle": "Fragekatalog - Authentifizierung und Autorisierung"
+  },
   "version": "1.0.0",
   "riskMapping": {
     "green": {

@@ -2,6 +2,7 @@
   "use strict";
 
   const appEl = document.getElementById("app");
+  const appTitleEl = document.getElementById("app-title-text");
   const STORAGE_KEY = "authz-survey-state-v1";
 
   const state = {
@@ -24,6 +25,7 @@
       }
 
       state.config = await res.json();
+      applyConfiguredTitles();
       restoreState();
       state.currentStep = clampStep(state.currentStep);
       render();
@@ -38,6 +40,20 @@
       return 0;
     }
     return Math.min(value, maxStep);
+  }
+
+  function applyConfiguredTitles() {
+    const configUi = state.config && state.config.ui ? state.config.ui : {};
+    const fallbackTitle =
+      (state.config && state.config.title) || "Fragekatalog";
+    const headerTitle = configUi.appTitle || fallbackTitle;
+    const documentTitle = configUi.documentTitle || fallbackTitle;
+
+    if (appTitleEl) {
+      appTitleEl.textContent = headerTitle;
+    }
+
+    document.title = documentTitle;
   }
 
   function getTotalSteps() {
