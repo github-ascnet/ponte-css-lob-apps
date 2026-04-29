@@ -365,7 +365,18 @@
     }
 
     const optionSet = state.config.optionSets[question.optionSet];
-    return Array.isArray(optionSet) ? optionSet : [];
+
+    // Altes Format: optionSet ist direkt ein Array
+    if (Array.isArray(optionSet)) {
+      return optionSet;
+    }
+
+    // Neues Format: { description, options }
+    if (optionSet && Array.isArray(optionSet.options)) {
+      return optionSet.options;
+    }
+
+    return [];
   }
 
   function bindQuestionEvents(section) {

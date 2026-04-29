@@ -1,4 +1,4 @@
-﻿{
+{
   "title": "Fragekatalog - Authentifizierung und Autorisierung",
   "ui": {
     "appTitle": "Fragekatalog - Authentifizierung und Autorisierung",
@@ -28,232 +28,154 @@
     }
   },
   "optionSets": {
-    "yesNoUnknown": [
-      { "value": "yes", "label": "Ja", "risk": "green" },
-      { "value": "no", "label": "Nein", "risk": "red" },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "betriebsmodell": [
-      { "value": "on_premises", "label": "On-Premises", "risk": "green" },
-      { "value": "cloud_saas", "label": "Cloud / SaaS", "risk": "yellow" },
-      { "value": "hybrid", "label": "Hybrid", "risk": "yellow" },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "plattform": [
-      { "value": "windows_server", "label": "Windows Server", "risk": "green" },
-      { "value": "linux", "label": "Linux", "risk": "green" },
-      { "value": "webplattform", "label": "Webplattform", "risk": "green" },
-      {
-        "value": "datenbankloesung",
-        "label": "Datenbanklösung",
-        "risk": "yellow"
-      },
-      { "value": "appliance", "label": "Appliance", "risk": "yellow" },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "authentifizierung": [
-      {
-        "value": "kerberos",
-        "label": "Windows Authentication / Kerberos",
-        "risk": "green"
-      },
-      { "value": "ntlm", "label": "NTLM", "risk": "yellow" },
-      {
-        "value": "username_password",
-        "label": "Benutzername / Passwort",
-        "risk": "yellow"
-      },
-      { "value": "saml", "label": "SAML", "risk": "green" },
-      { "value": "oauth2", "label": "OAuth 2.0", "risk": "green" },
-      { "value": "oidc", "label": "OpenID Connect", "risk": "green" },
-      { "value": "entra_id", "label": "Entra ID", "risk": "green" },
-      { "value": "adfs", "label": "ADFS", "risk": "yellow" },
-      {
-        "value": "other_idp",
-        "label": "Anderer Identity Provider",
-        "risk": "yellow"
-      },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "benutzeridentifikation": [
-      { "value": "upn", "label": "UPN", "risk": "green" },
-      { "value": "email", "label": "E-Mail-Adresse", "risk": "green" },
-      {
-        "value": "samaccountname",
-        "label": "sAMAccountName",
-        "risk": "yellow"
-      },
-      {
-        "value": "objectguid",
-        "label": "ObjectGUID / ImmutableId",
-        "risk": "green"
-      },
-      {
-        "value": "internal_user_id",
-        "label": "Interne Benutzer-ID",
-        "risk": "yellow"
-      },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "autorisierung": [
-      {
-        "value": "ad_groups_direct",
-        "label": "AD-Gruppen direkt",
-        "risk": "green"
-      },
-      {
-        "value": "internal_roles",
-        "label": "Internes Rollenmodell",
-        "risk": "yellow"
-      },
-      {
-        "value": "imported_roles",
-        "label": "Importierte Benutzer/Rollen",
-        "risk": "yellow"
-      },
-      {
-        "value": "manual_permissions",
-        "label": "Manuelle Berechtigungsvergabe",
-        "risk": "red"
-      },
-      { "value": "mixed", "label": "Mischform", "risk": "yellow" },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "cross_forest": [
-      { "value": "supported", "label": "Unterstützt", "risk": "green" },
-      {
-        "value": "supported_limited",
-        "label": "Unterstützt mit Einschränkungen",
-        "risk": "yellow"
-      },
-      { "value": "not_supported", "label": "Nicht unterstützt", "risk": "red" },
-      { "value": "not_tested", "label": "Nicht getestet", "risk": "grey" },
-      {
-        "value": "vendor_confirm",
-        "label": "Hersteller muss bestätigen",
-        "risk": "grey"
-      }
-    ],
-    "identity_provider": [
-      {
-        "value": "active_directory",
-        "label": "Active Directory",
-        "risk": "green"
-      },
-      { "value": "entra_id", "label": "Entra ID", "risk": "green" },
-      { "value": "adfs", "label": "ADFS", "risk": "yellow" },
-      {
-        "value": "third_party_iam",
-        "label": "Drittanbieter IAM",
-        "risk": "yellow"
-      },
-      { "value": "none", "label": "Kein zentrales System", "risk": "red" },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "gruppenunterstuetzung": [
-      {
-        "value": "nested_groups",
-        "label": "Verschachtelte Gruppen unterstützt",
-        "risk": "green"
-      },
-      { "value": "flat_only", "label": "Nur flache Gruppen", "risk": "yellow" },
-      { "value": "limited", "label": "Eingeschränkt", "risk": "yellow" },
-      { "value": "not_supported", "label": "Nicht unterstützt", "risk": "red" },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "einschraenkungen": [
-      {
-        "value": "token_size",
-        "label": "Token Size Limitation",
-        "risk": "yellow"
-      },
-      {
-        "value": "nested_group_issues",
-        "label": "Probleme mit verschachtelten Gruppen",
-        "risk": "yellow"
-      },
-      {
-        "value": "ad_attribute_dependency",
-        "label": "Abhängigkeit von AD-Attributen",
-        "risk": "yellow"
-      },
-      {
-        "value": "multi_domain_issues",
-        "label": "Probleme mit mehreren Domains oder Forests",
-        "risk": "red"
-      },
-      {
-        "value": "no_known_limitations",
-        "label": "Keine bekannten Einschränkungen",
-        "risk": "green"
-      },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "migration": [
-      {
-        "value": "no_impact",
-        "label": "Keine Auswirkungen erwartet",
-        "risk": "green"
-      },
-      {
-        "value": "adjustments_needed",
-        "label": "Anpassungen notwendig",
-        "risk": "yellow"
-      },
-      {
-        "value": "users_recreate",
-        "label": "Benutzer müssen neu angelegt werden",
-        "risk": "red"
-      },
-      {
-        "value": "groups_remap",
-        "label": "Gruppen müssen neu zugeordnet werden",
-        "risk": "red"
-      },
-      {
-        "value": "migration_possible",
-        "label": "Migration bestehender Benutzerzuordnungen möglich",
-        "risk": "green"
-      },
-      {
-        "value": "vendor_support_needed",
-        "label": "Herstellerunterstützung erforderlich",
-        "risk": "yellow"
-      },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "ampelbewertung": [
-      { "value": "green", "label": "Grün", "risk": "green" },
-      { "value": "yellow", "label": "Gelb", "risk": "yellow" },
-      { "value": "red", "label": "Rot", "risk": "red" },
-      { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
-    ],
-    "bewertung": [
-      { "value": "compatible", "label": "Kompatibel", "risk": "green" },
-      {
-        "value": "likely_compatible",
-        "label": "Wahrscheinlich kompatibel",
-        "risk": "yellow"
-      },
-      { "value": "unclear", "label": "Unklar", "risk": "grey" },
-      {
-        "value": "adaptation_expected",
-        "label": "Anpassungsbedarf erwartet",
-        "risk": "yellow"
-      },
-      {
-        "value": "critical",
-        "label": "Kritisch / nicht kompatibel",
-        "risk": "red"
-      }
-    ],
-    "rating_1_5": [
-      { "value": "1", "label": "1 - sehr gut", "risk": "green" },
-      { "value": "2", "label": "2 - gut", "risk": "green" },
-      { "value": "3", "label": "3 - neutral", "risk": "yellow" },
-      { "value": "4", "label": "4 - erhöht", "risk": "yellow" },
-      { "value": "5", "label": "5 - kritisch", "risk": "red" }
-    ]
+    "yesNoUnknown": {
+      "description": "Grundentscheidung zur Unterstützung einer Funktion. Ja bei klarer Unterstützung, Nein bei klar fehlender Unterstützung und Unbekannt bei fehlender belastbarer Information.",
+      "options": [
+        { "value": "yes", "label": "Ja", "risk": "green" },
+        { "value": "no", "label": "Nein", "risk": "red" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "betriebsmodell": {
+      "description": "Beschreibt das Betriebsmodell der Applikation. Die Auswahl unterstützt die Einschätzung von Integrationsaufwand, Sicherheitsverantwortung und Abhängigkeiten zu Infrastruktur oder Provider.",
+      "options": [
+        { "value": "on_premises", "label": "On-Premises", "risk": "green" },
+        { "value": "cloud_saas", "label": "Cloud / SaaS", "risk": "yellow" },
+        { "value": "hybrid", "label": "Hybrid", "risk": "yellow" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "plattform": {
+      "description": "Technische Zielplattformen der Applikation. Mehrfachauswahl möglich. Die Angaben helfen bei der Bewertung von Betrieb, Integration und Kompatibilität in der bestehenden Umgebung.",
+      "options": [
+        { "value": "windows_server", "label": "Windows Server", "risk": "green" },
+        { "value": "linux", "label": "Linux", "risk": "green" },
+        { "value": "webplattform", "label": "Webplattform", "risk": "green" },
+        { "value": "datenbankloesung", "label": "Datenbanklösung", "risk": "yellow" },
+        { "value": "appliance", "label": "Appliance", "risk": "yellow" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "authentifizierung": {
+      "description": "Unterstützte Anmeldeverfahren der Applikation. Mehrfachauswahl erlaubt. Diese Angaben sind zentral für die Bewertung der IAM-Kompatibilität und der zukünftigen Migrationsfähigkeit.",
+      "options": [
+        { "value": "kerberos", "label": "Windows Authentication / Kerberos", "risk": "green" },
+        { "value": "ntlm", "label": "NTLM", "risk": "yellow" },
+        { "value": "username_password", "label": "Benutzername / Passwort", "risk": "yellow" },
+        { "value": "saml", "label": "SAML", "risk": "green" },
+        { "value": "oauth2", "label": "OAuth 2.0", "risk": "green" },
+        { "value": "oidc", "label": "OpenID Connect", "risk": "green" },
+        { "value": "entra_id", "label": "Entra ID", "risk": "green" },
+        { "value": "adfs", "label": "ADFS", "risk": "yellow" },
+        { "value": "other_idp", "label": "Anderer Identity Provider", "risk": "yellow" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "benutzeridentifikation": {
+      "description": "Eindeutiges Kennzeichen zur internen Benutzerzuordnung. Wichtig für Provisionierung, konsistentes Mapping und stabile Identitäten bei Migrationen oder Verzeichniswechseln.",
+      "options": [
+        { "value": "upn", "label": "UPN", "risk": "green" },
+        { "value": "email", "label": "E-Mail-Adresse", "risk": "green" },
+        { "value": "samaccountname", "label": "sAMAccountName", "risk": "yellow" },
+        { "value": "objectguid", "label": "ObjectGUID / ImmutableId", "risk": "green" },
+        { "value": "internal_user_id", "label": "Interne Benutzer-ID", "risk": "yellow" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "autorisierung": {
+      "description": "Modell der Berechtigungsvergabe in der Applikation. Zeigt, ob zentrale Rollenmodelle, Gruppen oder manuelle Vergaben dominieren und wie gut Governance-Anforderungen erfüllt werden.",
+      "options": [
+        { "value": "ad_groups_direct", "label": "AD-Gruppen direkt", "risk": "green" },
+        { "value": "internal_roles", "label": "Internes Rollenmodell", "risk": "yellow" },
+        { "value": "imported_roles", "label": "Importierte Benutzer/Rollen", "risk": "yellow" },
+        { "value": "manual_permissions", "label": "Manuelle Berechtigungsvergabe", "risk": "red" },
+        { "value": "mixed", "label": "Mischform", "risk": "yellow" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "cross_forest": {
+      "description": "Fähigkeit zur Verarbeitung von Benutzern und Gruppen über mehrere Domains oder Forests hinweg. Relevant für größere AD-Strukturen und standortübergreifende Organisationen.",
+      "options": [
+        { "value": "supported", "label": "Unterstützt", "risk": "green" },
+        { "value": "supported_limited", "label": "Unterstützt mit Einschränkungen", "risk": "yellow" },
+        { "value": "not_supported", "label": "Nicht unterstützt", "risk": "red" },
+        { "value": "not_tested", "label": "Nicht getestet", "risk": "grey" },
+        { "value": "vendor_confirm", "label": "Hersteller muss bestätigen", "risk": "grey" }
+      ]
+    },
+    "identity_provider": {
+      "description": "Zentrales System für Identitäten und Anmeldung. Die Auswahl unterstützt die Bewertung von SSO-Fähigkeit, Betriebsmodell und Integrationsaufwand in die bestehende IAM-Landschaft.",
+      "options": [
+        { "value": "active_directory", "label": "Active Directory", "risk": "green" },
+        { "value": "entra_id", "label": "Entra ID", "risk": "green" },
+        { "value": "adfs", "label": "ADFS", "risk": "yellow" },
+        { "value": "third_party_iam", "label": "Drittanbieter IAM", "risk": "yellow" },
+        { "value": "none", "label": "Kein zentrales System", "risk": "red" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "gruppenunterstuetzung": {
+      "description": "Unterstützungsgrad von Gruppenstrukturen bei der Berechtigungsprüfung. Besonders verschachtelte Gruppen sind in Enterprise-Rollenmodellen zentral für korrekte Zugriffssteuerung.",
+      "options": [
+        { "value": "nested_groups", "label": "Verschachtelte Gruppen unterstützt", "risk": "green" },
+        { "value": "flat_only", "label": "Nur flache Gruppen", "risk": "yellow" },
+        { "value": "limited", "label": "Eingeschränkt", "risk": "yellow" },
+        { "value": "not_supported", "label": "Nicht unterstützt", "risk": "red" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "einschraenkungen": {
+      "description": "Bekannte technische Grenzen oder Probleme der Lösung. Mehrfachauswahl erlaubt. Ermöglicht eine realistische Erfassung von Risiken und erwartetem Anpassungsbedarf.",
+      "options": [
+        { "value": "token_size", "label": "Token Size Limitation", "risk": "yellow" },
+        { "value": "nested_group_issues", "label": "Probleme mit verschachtelten Gruppen", "risk": "yellow" },
+        { "value": "ad_attribute_dependency", "label": "Abhängigkeit von AD-Attributen", "risk": "yellow" },
+        { "value": "multi_domain_issues", "label": "Probleme mit mehreren Domains oder Forests", "risk": "red" },
+        { "value": "no_known_limitations", "label": "Keine bekannten Einschränkungen", "risk": "green" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "migration": {
+      "description": "Erwartete Auswirkungen bei Migration oder Systemwechsel. Unterstützt Aufwandsschätzung, Risikoanalyse und Planung von Maßnahmen für Benutzer, Gruppen und Berechtigungszuordnungen.",
+      "options": [
+        { "value": "no_impact", "label": "Keine Auswirkungen erwartet", "risk": "green" },
+        { "value": "adjustments_needed", "label": "Anpassungen notwendig", "risk": "yellow" },
+        { "value": "users_recreate", "label": "Benutzer müssen neu angelegt werden", "risk": "red" },
+        { "value": "groups_remap", "label": "Gruppen müssen neu zugeordnet werden", "risk": "red" },
+        { "value": "migration_possible", "label": "Migration bestehender Benutzerzuordnungen möglich", "risk": "green" },
+        { "value": "vendor_support_needed", "label": "Herstellerunterstützung erforderlich", "risk": "yellow" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "ampelbewertung": {
+      "description": "Kompakte Gesamteinschätzung als Ampelstatus. Grün für gute Passung, Gelb für Prüfbedarf, Rot für kritische Abweichung und Unbekannt für unzureichende Datenlage.",
+      "options": [
+        { "value": "green", "label": "Grün", "risk": "green" },
+        { "value": "yellow", "label": "Gelb", "risk": "yellow" },
+        { "value": "red", "label": "Rot", "risk": "red" },
+        { "value": "unknown", "label": "Unbekannt", "risk": "grey" }
+      ]
+    },
+    "bewertung": {
+      "description": "Verbale Gesamtbeurteilung der Kompatibilität. Ergänzt die numerischen Bewertungen und liefert eine schnelle fachliche Einordnung der Gesamtsituation.",
+      "options": [
+        { "value": "compatible", "label": "Kompatibel", "risk": "green" },
+        { "value": "likely_compatible", "label": "Wahrscheinlich kompatibel", "risk": "yellow" },
+        { "value": "unclear", "label": "Unklar", "risk": "grey" },
+        { "value": "adaptation_expected", "label": "Anpassungsbedarf erwartet", "risk": "yellow" },
+        { "value": "critical", "label": "Kritisch / nicht kompatibel", "risk": "red" }
+      ]
+    },
+    "rating_1_5": {
+      "description": "Skala von 1 bis 5. 1 bedeutet sehr geringe Risiken oder sehr gute Passung, 5 steht für hohen Handlungsbedarf oder kritische Abweichungen.",
+      "options": [
+        { "value": "1", "label": "1 - sehr gut", "risk": "green" },
+        { "value": "2", "label": "2 - gut", "risk": "green" },
+        { "value": "3", "label": "3 - neutral", "risk": "yellow" },
+        { "value": "4", "label": "4 - erhöht", "risk": "yellow" },
+        { "value": "5", "label": "5 - kritisch", "risk": "red" }
+      ]
+    }
   },
   "sections": [
     {
