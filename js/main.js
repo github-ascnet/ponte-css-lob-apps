@@ -197,6 +197,8 @@
     const required = question.required
       ? '<span class="badge-required">*</span>'
       : "";
+    const infoText = getQuestionInfoText(question);
+    const info = infoText ? renderQuestionInfo(question, infoText) : "";
     const help = question.helpText
       ? `<p class="help">${escapeHtml(question.helpText)}</p>`
       : "";
@@ -208,13 +210,49 @@
       `<article class="question ${
         hasError ? "has-error" : ""
       }" data-question-id="${escapeHtml(question.id)}">`,
+      '<div class="question-head">',
       `<label class="question-label" for="q-${escapeHtml(
         question.id
       )}">${escapeHtml(question.label)}${required}</label>`,
+      info,
+      "</div>",
       help,
       renderQuestionControl(question),
       errorHtml,
       "</article>",
+    ].join("");
+  }
+
+  function getQuestionInfoText(question) {
+    if (question.optionSet) {
+      const optionSet = state.config.optionSets[question.optionSet];
+      if (
+        optionSet &&
+        typeof optionSet.description === "string" &&
+        optionSet.description.trim()
+      ) {
+        return optionSet.description;
+      }
+    }
+
+    if (
+      typeof question.description === "string" &&
+      question.description.trim()
+    ) {
+      return question.description;
+    }
+
+    return "";
+  }
+
+  function renderQuestionInfo(question, infoText) {
+    const text = escapeHtml(infoText || "");
+    const label = escapeHtml(`Mehr Informationen zu ${question.label}`);
+    return [
+      `<button class="info-trigger" type="button" aria-label="${label}">`,
+      '<span class="info-glyph" aria-hidden="true">i</span>',
+      `<span class="info-tooltip" role="tooltip">${text}</span>`,
+      "</button>",
     ].join("");
   }
 

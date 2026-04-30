@@ -324,6 +324,7 @@
           "id": "appName",
           "type": "text",
           "label": "Name der Applikation",
+          "description": "Offizieller Name der zu bewertenden Applikation für eindeutige Zuordnung im Fragekatalog und in Exporten.",
           "placeholder": "z.B. Patientenportal",
           "required": true,
           "rowGroup": "appHeader"
@@ -332,7 +333,8 @@
           "id": "technicalContact",
           "type": "text",
           "label": "Technischer Ansprechpartner",
-          "placeholder": "z.B. Max Mustermann (intern) oder support@vendor.com",
+          "description": "Interne Kontaktperson oder Herstellerkontakt für technische Rückfragen, Abklärungen und offene Integrationspunkte.",
+          "placeholder": "z.B. Peter Silie (intern) oder support@vendor.ch",
           "required": false,
           "rowGroup": "appHeader"
         },
@@ -340,6 +342,7 @@
           "id": "operatingModel",
           "type": "dropdown",
           "label": "Betriebsmodell",
+          "description": "Zeigt, ob die Applikation lokal, als Cloud-Service oder hybrid betrieben wird. Das beeinflusst Verantwortung, Sicherheit und Integrationsaufwand.",
           "required": true,
           "optionSet": "betriebsmodell"
         },
@@ -347,6 +350,7 @@
           "id": "platform",
           "type": "checkbox-group",
           "label": "Plattform",
+          "description": "Technische Zielplattformen der Lösung. Mehrfachauswahl erlaubt, um Mischszenarien realistisch abzubilden.",
           "required": true,
           "optionSet": "plattform"
         }
@@ -362,6 +366,7 @@
           "id": "supportsModernProtocols",
           "type": "radio-cards",
           "label": "Unterstützt die Lösung moderne Verfahren (SAML/OIDC/OAuth)?",
+          "description": "Grundsatzfrage zur Unterstützung moderner Authentifizierungs- und Föderationsstandards. Wichtig für SSO und Zukunftsfähigkeit.",
           "required": true,
           "optionSet": "yesNoUnknown"
         },
@@ -369,6 +374,7 @@
           "id": "authenticationMethods",
           "type": "checkbox-group",
           "label": "Unterstützte Authentifizierung",
+          "description": "Konkrete Anmeldeverfahren, die technisch unterstützt werden. Mehrfachauswahl möglich zur Bewertung der realen IAM-Kompatibilität.",
           "required": true,
           "optionSet": "authentifizierung"
         },
@@ -376,6 +382,7 @@
           "id": "crossForestCapability",
           "type": "dropdown",
           "label": "Cross-Forest-Fähigkeit",
+          "description": "Bewertet, ob Benutzer und Gruppen über mehrere Domains oder Forests korrekt verarbeitet werden können.",
           "required": true,
           "optionSet": "cross_forest"
         }
@@ -391,6 +398,7 @@
           "id": "userIdentification",
           "type": "dropdown",
           "label": "Benutzeridentifikation",
+          "description": "Kennzeichen, mit dem Benutzer intern identifiziert und zugeordnet werden. Entscheidend für stabile Provisionierung und Mapping.",
           "required": true,
           "optionSet": "benutzeridentifikation"
         },
@@ -398,6 +406,7 @@
           "id": "identityProvider",
           "type": "dropdown",
           "label": "Identity Provider",
+          "description": "Zentrales Identitäts- oder Anmeldesystem, das für Authentifizierung und ggf. SSO verwendet wird.",
           "required": true,
           "optionSet": "identity_provider"
         },
@@ -405,6 +414,7 @@
           "id": "groupSupport",
           "type": "dropdown",
           "label": "Gruppenunterstützung",
+          "description": "Grad der Unterstützung von Gruppenstrukturen bei der Berechtigungsprüfung, inklusive verschachtelter Gruppen.",
           "required": true,
           "optionSet": "gruppenunterstuetzung"
         }
@@ -420,6 +430,7 @@
           "id": "authorizationModel",
           "type": "dropdown",
           "label": "Autorisierung",
+          "description": "Berechtigungsmodell der Applikation, z.B. AD-Gruppen, Rollenmodell oder manuelle Vergabe.",
           "required": true,
           "optionSet": "autorisierung"
         },
@@ -427,6 +438,7 @@
           "id": "knownLimitations",
           "type": "checkbox-group",
           "label": "Bekannte Einschränkungen",
+          "description": "Bereits bekannte technische Grenzen oder Risiken der Lösung. Mehrfachauswahl für vollständige Risikobetrachtung.",
           "required": true,
           "optionSet": "einschraenkungen"
         },
@@ -434,6 +446,7 @@
           "id": "migrationImpact",
           "type": "dropdown",
           "label": "Migration",
+          "description": "Erwartete Auswirkungen bei Migration oder Wechsel des Zielsystems, inklusive Anpassungs- und Unterstützungsbedarf.",
           "required": true,
           "optionSet": "migration"
         }
@@ -449,6 +462,7 @@
           "id": "compatibilityAssessment",
           "type": "dropdown",
           "label": "Bewertung",
+          "description": "Verbale Gesamtbeurteilung der Kompatibilität als fachliche Einordnung der Situation.",
           "required": true,
           "optionSet": "bewertung"
         },
@@ -456,6 +470,7 @@
           "id": "riskScore",
           "type": "rating-scale",
           "label": "Risiko (1-5)",
+          "description": "Numerische Bewertung des Risikos auf einer Skala von 1 (niedrig) bis 5 (hoch).",
           "required": true,
           "optionSet": "rating_1_5"
         },
@@ -463,6 +478,7 @@
           "id": "adaptationScore",
           "type": "rating-scale",
           "label": "Anpassungsbedarf (1-5)",
+          "description": "Numerische Bewertung des erwarteten Anpassungsaufwands auf einer Skala von 1 (gering) bis 5 (kritisch).",
           "required": true,
           "optionSet": "rating_1_5"
         },
@@ -470,6 +486,7 @@
           "id": "trafficLight",
           "type": "ampel",
           "label": "Ampelbewertung",
+          "description": "Kompakte Gesamteinschätzung als Ampelstatus: Grün, Gelb, Rot oder Unbekannt.",
           "required": true,
           "optionSet": "ampelbewertung"
         }
